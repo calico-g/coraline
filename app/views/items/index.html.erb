@@ -6,16 +6,16 @@
       <h1>yo yo yo</h1>
     </div>
     <div class="col-sm-12">
-      <%= link_to 'New Item', new_item_path %>
+      <%= render partial: "new", path: new_item_path %>
     </div>
   </div>
-
 
   <div class="row">
     <div class="col-sm-12">
       DATE
     </div>
   </div>
+  
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-sm-1"><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
