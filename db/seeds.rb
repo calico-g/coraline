@@ -1,0 +1,5 @@
+Item.create!(name: 'grocery shopping', item_type: 'number')
+Item.create!(name: 'wash the car', item_type: 'scale')
+Item.create!(name: 'register kids for school', item_type: 'boolean')
+Item.create!(name: 'check engine light', item_type: 'number')
+Item.create!(name: 'dog groomers', item_type: 'scale')
