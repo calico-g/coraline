@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>yo yo yo</h1>
+    </div>
+    <div class="col-sm-12">
+      <%= link_to 'New Item', new_item_path %>
+    </div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Item type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+  <div class="row">
+    <div class="col-sm-12">
+      DATE
+    </div>
+  </div>
+  <div class="row">
     <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.item_type %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-sm-1"><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      <div class="col-sm-3"><%= item.name %></div>
+      <div class="col-sm-3">input</div>
+      <div class="col-sm-4">notes</div>
+      <div class="col-sm-1">clear</div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Item', new_item_path %>
+</div>
