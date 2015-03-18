@@ -16,12 +16,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= radio_button_tag(:item_type, "number") %>
-    <%= label_tag(:item_number, "number") %>
-    <%= radio_button_tag(:item_type, "scale") %>
-    <%= label_tag(:item_scale, "scale") %>
-    <%= radio_button_tag(:item_type, "boolean") %>
-    <%= label_tag(:item_boolean, "boolean") %>
+    <%= f.radio_button_tag(:item_type, "number") %>
+    <%= f.label_tag(:item_number, "number") %>
+    <%= f.radio_button_tag(:item_type, "scale") %>
+    <%= f.label_tag(:item_scale, "scale") %>
+    <%= f.radio_button_tag(:item_type, "boolean") %>
+    <%= f.label_tag(:item_boolean, "boolean") %>
   </div>
   <div class="actions">
     <%= f.submit %>

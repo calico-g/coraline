@@ -30,10 +30,8 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save
         format.html { redirect_to '/', notice: 'Item was successfully created.' }
-        format.json { render :index, status: :created, location: @item }
       else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.html { redirect_to '/', alert: @item.errors.full_messages }
       end
     end
   end
