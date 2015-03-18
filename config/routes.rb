@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :traces
+
   resources :items
 
   root 'items#index'
