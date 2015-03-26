@@ -19,13 +19,26 @@
 
   <div class="row">
     <% @items.each do |item| %>
-      <div class="col-sm-1"><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-      <div class="col-sm-1"><%= item.id %></div>
-      <div class="col-sm-3"><%= item.name %></div>
-      <div class="col-sm-2">input</div>
-      <div class="col-sm-4">notes</div>
-      <div class="col-sm-1">clear</div>
+      <%= form_for @item do |f| %>
+
+        <div class=""><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+        <div class=""><%= item.id %></div>
+        <div class=""><%= f.text_field :name, placeholder: item.name %></div>
+
+        <%= f.fields_for :trace do |builder| %>
+          <div class=""><%= builder.label :input, "input" %><%= builder.number_field :input %></div>
+          <div class=""><%= builder.label :notes, "notes" %><%= builder.text_area :notes %></div>
+        <% end %>
+
+        <div class="">clear</div><br>
+
+      <% end %>
+
     <% end %>
+    <%= link_to "Update all items", update_items_path(), :onclick => "$('#new_item').submit()", method: :patch %>
+
   </div>
 
 </div>
+
+

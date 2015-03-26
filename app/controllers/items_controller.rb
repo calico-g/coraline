@@ -36,6 +36,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update_all_items
+    puts "parms?????1!"
+    puts params
+    items = Item.all
+    ItemUpdater.new(items).update_item
+    redirect_to '/'
+  end
+
+
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
@@ -68,6 +77,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :item_type)
+      params.require(:item).permit(:name, :item_type, :trace)
     end
 end
