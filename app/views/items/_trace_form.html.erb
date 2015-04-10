@@ -1,0 +1,9 @@
+<div class=""><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<div class=""><%= item.id %></div>
+<input name="trace[][item_id]" type="hidden" value="<%= item.id %>"/>
+<div class=""><%= item.name %></div>
+<div class="">trace input</div>
+<input name="trace[][input]" type="number"/>
+<input name="trace[][notes]" type="text_area"/>
+
+<div class="">clear</div><br>

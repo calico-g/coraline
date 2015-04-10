@@ -25,16 +25,18 @@ class TracesController < ApplicationController
   # POST /traces.json
   def create
     @trace = Trace.new(trace_params)
+    puts "***********************"
+    puts trace_params
 
-    respond_to do |format|
-      if @trace.save
-        format.html { redirect_to @trace, notice: 'Trace was successfully created.' }
-        format.json { render :show, status: :created, location: @trace }
-      else
-        format.html { render :new }
-        format.json { render json: @trace.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @trace.save
+    #     format.html { redirect_to @trace, notice: 'Trace was successfully created.' }
+    #     format.json { render :show, status: :created, location: @trace }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @trace.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /traces/1
@@ -69,6 +71,6 @@ class TracesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trace_params
-      params.require(:trace).permit(:item_id, :input, :notes)
+      params.require[:trace][0].permit(:item_id, :notes, :input)
     end
 end

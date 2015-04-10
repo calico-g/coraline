@@ -7,7 +7,7 @@
       <h1>yo yo yo</h1>
     </div>
     <div class="col-sm-12">
-      <%= render partial: "new", path: new_item_path %>
+      <%= render partial: "new_item", path: new_item_path %>
     </div>
   </div>
 
@@ -18,25 +18,15 @@
   </div>
 
   <div class="row">
-    <% @items.each do |item| %>
-      <%= form_for @item do |f| %>
+    <%= form_tag "/traces" do %>
 
-        <div class=""><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-        <div class=""><%= item.id %></div>
-        <div class=""><%= f.text_field :name, placeholder: item.name %></div>
-
-        <%= f.fields_for :trace do |builder| %>
-          <div class=""><%= builder.label :input, "input" %><%= builder.number_field :input %></div>
-          <div class=""><%= builder.label :notes, "notes" %><%= builder.text_area :notes %></div>
-        <% end %>
-
-        <div class="">clear</div><br>
-
+      <% @items.each do |item| %>
+        <%= render partial: 'trace_form', :locals => {:item => item} %> 
       <% end %>
 
-    <% end %>
-    <%= link_to "Update all items", update_items_path(), :onclick => "$('#new_item').submit()", method: :patch %>
+      <%= submit_tag "submit" %>
 
+    <% end %>
   </div>
 
 </div>
