@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @item = Item.new
+    @date = Time.now.strftime("%m-%d-%Y")
   end
 
   # GET /items/1

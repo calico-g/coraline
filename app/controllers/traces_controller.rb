@@ -24,7 +24,12 @@ class TracesController < ApplicationController
   # POST /traces
   # POST /traces.json
   def create
-    trace_params.each do |trace|
+    trace_data = trace_params
+    u_date = trace_data.pop["u_date"]
+    u_date = Date.strptime(u_date, "%m-%d-%Y")
+
+    trace_data.each do |trace|
+      trace[:u_date] = u_date
       @trace = Trace.new(trace)
       if @trace.save
         flash[:notice] = "yay!!!"
@@ -65,12 +70,11 @@ class TracesController < ApplicationController
       @trace = Trace.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def trace_params
-      fucking_params = params[:trace]
-      fucking_params.each do |param|
-        param.permit!
-      end
+    # Never trust parameters from the scary internet, only allow the white list through.
+      fucking_params = params[:trace].each { |trace| trace.permit! }
+      u_date = params.permit(:u_date)
+      fucking_params << u_date
     end
 
 end

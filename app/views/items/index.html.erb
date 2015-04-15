@@ -11,14 +11,12 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12">
-      <%= Time.now.strftime("%m-%d-%Y") %>
-    </div>
-  </div>
+
 
   <div class="row">
     <%= form_tag "/traces" do %>
+
+      <input name="u_date" type="text" data-provide='datepicker' value=<%= @date%>>
 
       <% @items.each do |item| %>
         <%= render partial: 'trace_form', :locals => {:item => item} %> 
