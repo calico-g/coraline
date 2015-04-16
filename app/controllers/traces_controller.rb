@@ -21,12 +21,23 @@ class TracesController < ApplicationController
   def edit
   end
 
-  # POST /traces
-  # POST /traces.json
-  def create
+  def parse_form
     trace_data = trace_params
     u_date = trace_data.pop["u_date"]
     u_date = Date.strptime(u_date, "%m-%d-%Y")
+
+    trace_data.each do |trace|
+      if Trace.find_by(item_id: trace[:item_id], u_date: "2015-04-15") #udate in that format
+      # if record already exists with u_date and item_id
+        # it'll return that dude, update trace
+      # else
+        # returns nil, create trace
+    end
+  end
+
+  # POST /traces
+  # POST /traces.json
+  def create
 
     trace_data.each do |trace|
       trace[:u_date] = u_date
@@ -72,9 +83,9 @@ class TracesController < ApplicationController
 
     def trace_params
     # Never trust parameters from the scary internet, only allow the white list through.
-      fucking_params = params[:trace].each { |trace| trace.permit! }
+      fucking_fiddly_annoying_params = params[:trace].each { |trace| trace.permit! }
       u_date = params.permit(:u_date)
-      fucking_params << u_date
+      fucking_fiddly_annoying_params << u_date
     end
 
 end

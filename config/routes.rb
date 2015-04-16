@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :items
 
   root 'items#index'
-  patch 'update_items' => 'items#update_all_items'
+  post 'traces_form' => 'traces#parse_form'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
