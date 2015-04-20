@@ -18,8 +18,8 @@
 
       <input name="u_date" type="text" data-provide='datepicker' value=<%= @date%>>
 
-      <% @items.each do |item| %>
-        <%= render partial: 'trace_form', :locals => {:item => item} %> 
+      <% @form_items.each do |item| %>
+        <%= render partial: 'trace_form', :locals => {:item => item[0], :trace => item[1]} %> 
       <% end %>
 
       <%= submit_tag "submit" %>

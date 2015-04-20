@@ -7,62 +7,47 @@ class TracesController < ApplicationController
     @traces = Trace.all
   end
 
-  # GET /traces/1
-  # GET /traces/1.json
-  def show
-  end
-
   # GET /traces/new
   def new
     @trace = Trace.new
   end
 
-  # GET /traces/1/edit
-  def edit
-  end
-
   def parse_form
     trace_data = trace_params
     u_date = trace_data.pop["u_date"]
-    u_date = Date.strptime(u_date, "%m-%d-%Y")
 
-    trace_data.each do |trace|
-      if Trace.find_by(item_id: trace[:item_id], u_date: "2015-04-15") #udate in that format
-      # if record already exists with u_date and item_id
-        # it'll return that dude, update trace
-      # else
-        # returns nil, create trace
-    end
-  end
-
-  # POST /traces
-  # POST /traces.json
-  def create
-
-    trace_data.each do |trace|
-      trace[:u_date] = u_date
-      @trace = Trace.new(trace)
-      if @trace.save
-        flash[:notice] = "yay!!!"
+    trace_data.each do |trace_data|
+      trace_data[:u_date] = u_date
+      found_trace = Trace.find_by(item_id: trace_data[:item_id], u_date: trace_data[:u_date])
+      if found_trace
+        update(found_trace, trace_data)
       else
-        flash[:error] = "boooo"
+        create(trace_data)
       end
     end
     redirect_to '/'
   end
 
+  # POST /traces
+  # POST /traces.json
+  def create(trace_data)
+    trace = Trace.new(trace_data)
+    if trace.save
+      flash[:notice] = "yay!!!"
+    else
+      flash[:error] = "boooo"
+    end
+  end
+
   # PATCH/PUT /traces/1
   # PATCH/PUT /traces/1.json
-  def update
-    respond_to do |format|
-      if @trace.update(trace_params)
-        format.html { redirect_to @trace, notice: 'Trace was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trace }
-      else
-        format.html { render :edit }
-        format.json { render json: @trace.errors, status: :unprocessable_entity }
-      end
+  def update(found_trace, trace_data) 
+    if found_trace.update(trace_data)
+      flash[:notice] = 'Trace was successfully updated.'
+    else
+      flash[:error] = 'There was a cock up.'
     end
+
   end
 
   # DELETE /traces/1

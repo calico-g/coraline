@@ -4,23 +4,28 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
     @item = Item.new
-    @date = Time.now.strftime("%m-%d-%Y")
-  end
+    @date = Time.now.strftime("%Y-%m-%d")
+    @items = Item.all
+    @form_items = {}
 
-  # GET /items/1
-  # GET /items/1.json
-  def show
+    @items.each do |item|
+      todays_trace = Trace.find_by(item_id: item.id, u_date: @date)
+      if todays_trace
+        @form_items[item] = todays_trace
+      else
+        puts "blah"
+        puts @form_items
+        puts item
+        @form_items[item] = Trace.new({input: "", notes: ""})
+      end
+    end
+    
   end
 
   # GET /items/new
   def new
     @item = Item.new
-  end
-
-  # GET /items/1/edit
-  def edit
   end
 
   # POST /items
@@ -36,15 +41,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-
-  def update_all_items
-    puts "parms?????1!"
-    puts params
-    items = Item.all
-    ItemUpdater.new(items).update_item
-    redirect_to '/'
-  end
-
 
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
