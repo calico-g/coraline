@@ -16,7 +16,7 @@
   <div class="row">
     <%= form_tag "/traces_form" do %>
 
-      <input name="u_date" type="text" data-provide='datepicker' value=<%= @date%>>
+      <input name="u_date" type="text" data-provide='datepicker' data-date-format="yyyy-mm-dd" value=<%= @date%>>
 
       <% @form_items.each do |item| %>
         <%= render partial: 'trace_form', :locals => {:item => item[0], :trace => item[1]} %> 
