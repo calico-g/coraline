@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @item = Item.new
-    @date = Time.now.strftime("%Y-%m-%d")
     @items = Item.all
+    @date = params[:u_date] || Time.now.strftime("%Y-%m-%d")
     @form_items = {}
 
     @items.each do |item|
@@ -14,13 +14,10 @@ class ItemsController < ApplicationController
       if todays_trace
         @form_items[item] = todays_trace
       else
-        puts "blah"
-        puts @form_items
-        puts item
         @form_items[item] = Trace.new({input: "", notes: ""})
       end
     end
-    
+
   end
 
   # GET /items/new
