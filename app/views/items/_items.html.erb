@@ -4,11 +4,13 @@
       <input name="u_date" type="text" data-provide='datepicker' data-date-format="yyyy-mm-dd" value="<%= @date%>">
     </div>
 
-    <% @form_items.each do |item| %>
-      <%= render partial: 'trace_form', :locals => {:item => item[0], :trace => item[1]} %> 
-    <% end %>
+    <div id="main-form">
+      <% @form_items.each do |item| %>
+        <%= render partial: 'trace_form', :locals => {:item => item[0], :trace => item[1]} %> 
+      <% end %>
 
-    <%= submit_tag "submit" %>
+      <%= submit_tag "submit" %>
+    </div>
 
   <% end %>
 </div>

@@ -19,6 +19,8 @@
 
 
 <script type="text/javascript">
+$.fn.datepicker.defaults.autoclose = true;
+
 $("#datepicker").on("changeDate", function(event) {
   var u_date = $("input[name=u_date]").val();
 
@@ -27,8 +29,10 @@ $("#datepicker").on("changeDate", function(event) {
     url: "/items",
     data: { u_date },
     success: function(data){
-      console.log(data)
+      var formData = $(data).find( '#main-form' )
+      $( '#main-form' ).replaceWith( formData );
     }
   });
+
 });
 </script>
