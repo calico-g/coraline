@@ -6,7 +6,7 @@
 
     <div id="main-form">
       <% @form_items.each do |item| %>
-        <%= render partial: 'trace_form', :locals => {:item => item[0], :trace => item[1]} %> 
+        <%= render partial: 'trace_form', :locals => {:item => item[0], :trace => item[1], :type => item[0].item_type } %> 
       <% end %>
 
       <%= submit_tag "submit" %>

@@ -1,9 +1,26 @@
 <div class=""><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-<div class=""><%= item.id %></div>
+<div class=""><%= item.id %> | <%= type %></div>
 <input name="trace[][item_id]" type="hidden" value="<%= item.id %>"/>
 <div class=""><%= item.name %></div>
-<div class="">trace input</div>
-<input name="trace[][input]" type="number" value="<%= trace.input %>" />
-<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+<div class="">input</div>
+
+<% if type == "number" %>
+
+	<input name="trace[][input]" type="number" value="<%= trace.input %>" />
+
+<% elsif type == "scale" %>
+
+	<input name="trace[][input]" type="range" value="<%= trace.input %>" />
+
+<% else %>	
+
+	<input name="trace[][input]<%=item.name%>" type="radio" id="<%=item.name%>__1" value=1>
+	<input name="trace[][input]<%=item.name%>" type="radio" id="<%=item.name%>__0" value=0>
+
+<% end %>
+
+<div>
+	<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+</div>
 
 <div class="">clear</div><br>

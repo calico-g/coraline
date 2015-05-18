@@ -17,6 +17,10 @@ class TracesController < ApplicationController
     u_date = trace_data.pop["u_date"]
 
     trace_data.each do |trace_data|
+      if trace_data["input"].class != String # this is a boolean value and must be extracted
+        trace_data["input"] = trace_data["input"].values[0].to_s
+      end
+
       trace_data[:u_date] = u_date
       found_trace = Trace.find_by(item_id: trace_data[:item_id], u_date: trace_data[:u_date])
       if found_trace
@@ -72,5 +76,5 @@ class TracesController < ApplicationController
       u_date = params.permit(:u_date)
       fucking_fiddly_annoying_params << u_date
     end
-
+    
 end
