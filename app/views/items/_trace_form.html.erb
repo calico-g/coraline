@@ -6,11 +6,11 @@
 
 <% if type == "number" %>
 
-	<input name="trace[][input]" type="number" value="<%= trace.input %>" />
+	<%= number_field_tag 'trace[][input]', trace.input %>
 
 <% elsif type == "scale" %>
 
-	<input name="trace[][input]" type="range" min="0" max="10" value="<%= trace.input %>" />
+	<%= range_field_tag 'trace[][input]', trace.input, in: 0...10 %>
 
 <% else %>
 
