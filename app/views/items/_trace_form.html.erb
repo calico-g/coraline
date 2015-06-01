@@ -10,12 +10,18 @@
 
 <% elsif type == "scale" %>
 
-	<input name="trace[][input]" type="range" value="<%= trace.input %>" />
+	<input name="trace[][input]" type="range" min="0" max="10" value="<%= trace.input %>" />
 
-<% else %>	
+<% else %>
 
-	<input name="trace[][input]<%=item.name%>" type="radio" id="<%=item.name%>__1" value=1>
-	<input name="trace[][input]<%=item.name%>" type="radio" id="<%=item.name%>__0" value=0>
+	<!-- oh booleans, you're such a pain -->
+	<% if trace.input == nil %>
+		<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=false %>
+		<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=false %>
+	<% else %>
+		<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=(trace.input == 1) %>
+		<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=(trace.input != 1) %>
+	<% end %>
 
 <% end %>
 
@@ -24,3 +30,5 @@
 </div>
 
 <div class="">clear</div><br>
+
+
