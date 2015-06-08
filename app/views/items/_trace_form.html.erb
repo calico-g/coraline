@@ -10,7 +10,8 @@
 
 <% elsif type == "scale" %>
 
-	<%= range_field_tag 'trace[][input]', trace.input, in: 0...10 %>
+	<div class="range-input-value"></div>
+	<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
 
 <% else %>
 
@@ -31,4 +32,13 @@
 
 <div class="">clear</div><br>
 
+<script type="text/javascript">
 
+$( 'input[type="range"]' ).change(function() {
+
+	var rangeValue = $(this).val()
+	$(this).prev('.range-input-value').html( rangeValue )
+ 
+});
+
+</script>
