@@ -6,39 +6,37 @@
 
 <% if type == "number" %>
 
-	<%= number_field_tag 'trace[][input]', trace.input %>
+	<div>
+		<%= number_field_tag 'trace[][input]', trace.input %>
+		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+		<div class="clear-number">clear</div>
+	</div>
 
 <% elsif type == "scale" %>
-
-	<div class="range-input-value"></div>
-	<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
+	<div>
+		<div class="range-input-value"></div>
+		<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
+		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+		<div class="clear-range">clear</div>
+	</div>
 
 <% else %>
 
-	<!-- oh booleans, you're such a pain -->
-	<% if trace.input == nil %>
-		<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=false %>
-		<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=false %>
-	<% else %>
-		<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=(trace.input == 1) %>
-		<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=(trace.input != 1) %>
-	<% end %>
+	<div>
+		<!-- oh booleans, you're such a pain -->
+		<% if trace.input == nil %>
+			<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=false %>
+			<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=false %>
+		<% else %>
+			<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=(trace.input == 1) %>
+			<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=(trace.input != 1) %>
+		<% end %>
+		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+		<div class="clear-boolean">clear</div>
+	</div>
 
 <% end %>
+<br>
 
-<div>
-	<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
-</div>
 
-<div class="">clear</div><br>
 
-<script type="text/javascript">
-
-$( 'input[type="range"]' ).change(function() {
-
-	var rangeValue = $(this).val()
-	$(this).prev('.range-input-value').html( rangeValue )
- 
-});
-
-</script>
