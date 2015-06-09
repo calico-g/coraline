@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
   post 'traces_form' => 'traces#parse_form'
+  get 'charts' => 'charts#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

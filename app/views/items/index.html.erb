@@ -9,6 +9,9 @@
     <div class="col-sm-12">
       <%= render partial: "new_item", path: new_item_path %>
     </div>
+    <div class="col-sm-12">
+      <%= link_to "see graphs", charts_path, class: "btn" %> 
+    </div>
   </div>
 
   <%= render partial: "items" %>

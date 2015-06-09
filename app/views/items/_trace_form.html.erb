@@ -2,14 +2,13 @@
 <div class=""><%= item.id %> | <%= type %></div>
 <input name="trace[][item_id]" type="hidden" value="<%= item.id %>"/>
 <div class=""><%= item.name %></div>
-<div class="">input</div>
 
 <% if type == "number" %>
 
 	<div>
 		<%= number_field_tag 'trace[][input]', trace.input %>
 		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
-		<div class="clear-number">clear</div>
+		<span class="clear-number">clear</span>
 	</div>
 
 <% elsif type == "scale" %>
@@ -17,7 +16,7 @@
 		<div class="range-input-value"></div>
 		<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
 		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
-		<div class="clear-range">clear</div>
+		<span class="clear-range">clear</span>
 	</div>
 
 <% else %>
@@ -25,14 +24,18 @@
 	<div>
 		<!-- oh booleans, you're such a pain -->
 		<% if trace.input == nil %>
+			true
 			<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=false %>
+			false
 			<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=false %>
 		<% else %>
+			true
 			<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=(trace.input == 1) %>
+			false
 			<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=(trace.input != 1) %>
 		<% end %>
 		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
-		<div class="clear-boolean">clear</div>
+		<span class="clear-boolean">clear</span>
 	</div>
 
 <% end %>
