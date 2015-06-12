@@ -1,3 +1,76 @@
 HERE BE CHARTS
 
-<%= high_chart("some_id", @chart) %>
+<div id="number-chart" style="width:100%; height:400px;"></div>
+<div id="scale-chart" style="width:100%; height:400px;"></div>
+<div id="boolean-chart" style="width:100%; height:400px;"></div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#number-chart').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Here be yr numbers'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                day: '%e %b %Y'
+            }
+        },
+        yAxis: {
+            title: {
+                text: "Here's some sweet numbers. Have a great day."
+            }
+        },
+        series: gon.number_series
+    });
+
+    $('#scale-chart').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Here be yr ranges'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                day: '%e %b %Y'
+            }
+        },
+        yAxis: {
+            title: {
+                text: "Here's some sweet range data. Have a great day."
+            }
+        },
+        series: gon.scale_series
+    });
+
+    $('#boolean-chart').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Here be yr ranges'
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                day: '%e %b %Y'
+            }
+        },
+        yAxis: {
+            title: {
+                text: "Booleans in da house. Fuckin booleans."
+            }
+        },
+        series: gon.boolean_series
+    });
+
+});
+
+
+</script>

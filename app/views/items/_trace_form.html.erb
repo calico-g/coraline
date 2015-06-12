@@ -27,12 +27,12 @@
 			true
 			<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=false %>
 			false
-			<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=false %>
+			<%= radio_button_tag 'trace[][input]'+item.name, -1, checked=false %>
 		<% else %>
 			true
 			<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=(trace.input == 1) %>
 			false
-			<%= radio_button_tag 'trace[][input]'+item.name, 0, checked=(trace.input != 1) %>
+			<%= radio_button_tag 'trace[][input]'+item.name, -1, checked=(trace.input != 1) %>
 		<% end %>
 		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
 		<span class="clear-boolean">clear</span>

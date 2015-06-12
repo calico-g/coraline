@@ -1,20 +1,30 @@
 class ChartsController < ApplicationController
 
   def index
-    @chart = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(:text => "Population vs GDP For 5 Big Countries [2009]")
-      f.xAxis(:categories => ["United States", "Japan", "China", "Germany", "France"])
-      f.series(:name => "GDP in Billions", :yAxis => 0, :data => [14119, 5068, 4985, 3339, 2656])
-      f.series(:name => "Population in Millions", :yAxis => 1, :data => [310, 127, 1340, 81, 65])
+    gon.number_series = get_data("number")
+    gon.scale_series = get_data("scale")
+    gon.boolean_series = get_data("boolean")
+  end
 
-      f.yAxis [
-        {:title => {:text => "GDP in Billions", :margin => 70} },
-        {:title => {:text => "Population in Millions"}, :opposite => true},
-      ]
+  private
 
-      f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
-      f.chart({:defaultSeriesType=>"column"})
+  def get_data(type)
+    series = []
+
+    items = Item.where("item_type = ?", type)
+    items.each do |item|
+      item_hash = { name: item.name, data: [] }
+      traces = item.traces
+      traces.each do |trace|
+        trace_array = []
+        trace_array[0] = trace.u_date.to_datetime.to_i*1000
+        trace_array[1] = trace.input
+        item_hash[:data] << trace_array
+      end
+      item_hash[:data].sort!
+      series << item_hash
     end
+    series
   end
 
 end
