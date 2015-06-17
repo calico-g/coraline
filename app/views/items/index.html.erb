@@ -21,42 +21,6 @@
 
 <script type="text/javascript">
 
-  $.fn.datepicker.defaults.autoclose = true;
-  $("#datepicker").on("changeDate", function(event) {
-    var u_date = $("input[name=u_date]").val();
 
-    $.ajax({
-      type: "GET",
-      url: "/items",
-      data: { u_date },
-      success: function(data){
-        var formData = $(data).find( '#main-form' )
-        $( '#main-form' ).replaceWith( formData );
-      }
-    });
-  });
-
-
-  $( 'input[type="range"]' ).change(function() {
-    var rangeValue = $(this).val()
-    $(this).prev('.range-input-value').html( rangeValue )
-  });
-
-  $( '.clear-number' ).click(function() {
-    $(this).prev().val( null )
-    $(this).prev().prev().val( null )
-  });
-
-  $( '.clear-range' ).click(function() {
-    $(this).prev().val( null )
-    $(this).prev().prev().val( 0 )
-    $(this).prev().prev().prev().html( "" )
-  });
-
-  $( '.clear-boolean' ).click(function() {
-    $(this).prev().val( null )
-    $(this).prev().prev().prop('checked', false)
-    $(this).prev().prev().prev().prop('checked', false)
-  });
 
 </script>

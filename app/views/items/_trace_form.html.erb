@@ -41,5 +41,30 @@
 <% end %>
 <br>
 
+<script type="text/javascript">
+
+  $( 'input[type="range"]' ).change(function() {
+    var rangeValue = $(this).val()
+    $(this).prev('.range-input-value').html( rangeValue )
+  });
+
+  $( '.clear-number' ).click(function() {
+    $(this).prev().val( null )
+    $(this).prev().prev().val( null )
+  });
+
+  $( '.clear-range' ).click(function() {
+    $(this).prev().val( null )
+    $(this).prev().prev().val( 0 )
+    $(this).prev().prev().prev().html( "" )
+  });
+
+  $( '.clear-boolean' ).click(function() {
+    $(this).prev().val( null )
+    $(this).prev().prev().prop('checked', false)
+    $(this).prev().prev().prev().prop('checked', false)
+  });
+
+</script>
 
 
