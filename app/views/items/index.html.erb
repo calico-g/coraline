@@ -1,26 +1,25 @@
-<p id="notice"><%= notice %></p>
-<p id="alert"><%= alert %></p>
+<div class="main">
+  <p id="notice"><%= notice %></p>
+  <p id="alert"><%= alert %></p>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-12">
-      <h1>yo yo yo</h1>
+  <div class="container-fluid">
+    <div class="headline row">
+      <div class="col-sm-2"><%= image_tag("star-graph.png", size: "180x150", alt: "witty logo of a heart-shaped graph") %></div>
+      <div class="col-sm-10" style="height:150px; top:60px;">
+        <h1>coraline</h1>
+      </div>
     </div>
-    <div class="col-sm-12">
-      <%= render partial: "new_item", path: new_item_path %>
+    <hr>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= render partial: "new_item", path: new_item_path %>
+      </div>
+      <div class="col-sm-6">
+        <%= link_to "see graphs", charts_path, class: "btn" %> 
+      </div>
     </div>
-    <div class="col-sm-12">
-      <%= link_to "see graphs", charts_path, class: "btn" %> 
-    </div>
+
+    <%= render partial: "items" %>
+
   </div>
-
-  <%= render partial: "items" %>
-
 </div>
-
-
-<script type="text/javascript">
-
-
-
-</script>

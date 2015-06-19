@@ -1,0 +1,18 @@
+.main {
+	font-family: sans-serif;
+	padding: 20px;
+
+	h1 {
+	  color: darkgray;
+	  letter-spacing: 10px;
+	  font-size: 5em;
+	 }
+
+	#datepicker {
+	  font-size: 3em;
+	  input {
+	  	border: 0px;
+	  	letter-spacing: 3px;
+	  }
+	}
+}

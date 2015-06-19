@@ -1,28 +1,40 @@
-<div class=""><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-<div class=""><%= item.id %> | <%= type %></div>
-<input name="trace[][item_id]" type="hidden" value="<%= item.id %>"/>
-<div class=""><%= item.name %></div>
+<div class="row item-line">
 
-<% if type == "number" %>
-
-	<div>
-		<%= number_field_tag 'trace[][input]', trace.input %>
-		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
-		<span class="clear-number">clear</span>
+	<div class="col-sm-2">
+		<span><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+		<input name="trace[][item_id]" type="hidden" value="<%= item.id %>"/>
+		<span><%= item.name %></span>
 	</div>
 
-<% elsif type == "scale" %>
-	<div>
-		<div class="range-input-value"></div>
-		<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
+	<% if type == "number" %>
+
+	<div class="col-sm-4">
+		<%= number_field_tag 'trace[][input]', trace.input %>
+	</div>
+	<div class="col-sm-4">
 		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+	</div>
+	<div class="col-sm-2">
 		<span class="clear-range">clear</span>
 	</div>
 
-<% else %>
+	<% elsif type == "scale" %>
+	
+	<div class="col-sm-4">
+		<div class="range-input-value"></div>
+		<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
+	</div>
+	<div class="col-sm-4">
+		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+	</div>
+	<div class="col-sm-2">
+		<span class="clear-range">clear</span>
+	</div>
 
-	<div>
-		<!-- oh booleans, you're such a pain -->
+	<% else %>
+
+	<!-- oh booleans, you're such a pain -->
+	<div class="col-sm-4">
 		<% if trace.input == nil %>
 			true
 			<%= radio_button_tag 'trace[][input]'+item.name, 1, checked=false %>
@@ -34,12 +46,17 @@
 			false
 			<%= radio_button_tag 'trace[][input]'+item.name, -1, checked=(trace.input != 1) %>
 		<% end %>
+	</div>
+	<div class="col-sm-4">
 		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+	</div>
+	<div class="col-sm-2">
 		<span class="clear-boolean">clear</span>
 	</div>
 
-<% end %>
-<br>
+	<% end %>
+
+</div>
 
 <script type="text/javascript">
 
