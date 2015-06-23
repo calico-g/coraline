@@ -15,7 +15,7 @@
 		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
 	</div>
 	<div class="col-sm-2">
-		<span class="clear-range">clear</span>
+		<span class="clear-number">clear</span>
 	</div>
 
 	<% elsif type == "scale" %>
@@ -66,20 +66,19 @@
   });
 
   $( '.clear-number' ).click(function() {
-    $(this).prev().val( null )
-    $(this).prev().prev().val( null )
+    $(this).parent().prev().find('input').val( null )
+    $(this).parent().prev().prev().find('input').val( null )
   });
 
   $( '.clear-range' ).click(function() {
-    $(this).prev().val( null )
-    $(this).prev().prev().val( 0 )
-    $(this).prev().prev().prev().html( "" )
+    $(this).parent().prev().find('input').val( null )
+    $(this).parent().prev().prev().find('input').val( 0 )
+    $(this).parent().prev().prev().find('.range-input-value').html( "" )
   });
 
   $( '.clear-boolean' ).click(function() {
-    $(this).prev().val( null )
-    $(this).prev().prev().prop('checked', false)
-    $(this).prev().prev().prev().prop('checked', false)
+    $(this).parent().prev().find('input').val( null )
+    $(this).parent().prev().prev().find('input').prop('checked', false)
   });
 
 </script>
