@@ -1,7 +1,7 @@
 <div class="row item-line">
 
 	<div class="col-sm-2">
-		<span><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+		<span class="delete-item"><%= link_to 'X', item, method: :delete, data: { confirm: 'Are you sure?' } %></span>
 		<input name="trace[][item_id]" type="hidden" value="<%= item.id %>"/>
 		<span><%= item.name %></span>
 	</div>
@@ -19,7 +19,7 @@
 	</div>
 
 	<% elsif type == "scale" %>
-	
+
 	<div class="col-sm-4">
 		<div class="range-input-value"></div>
 		<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
