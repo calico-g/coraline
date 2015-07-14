@@ -21,7 +21,7 @@
 	<% elsif type == "scale" %>
 
 	<div class="col-sm-4">
-		<span class="range-input-value"></span>
+		<span class="range-input-value"><%= trace.input %></span>
 		<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
 	</div>
 	<div class="col-sm-4">
