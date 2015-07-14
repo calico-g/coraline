@@ -39,12 +39,16 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find_by(id: params[:id])
+  end
+
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
+        format.html { redirect_to items_path, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
         format.html { render :edit }

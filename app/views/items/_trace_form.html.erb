@@ -15,7 +15,9 @@
 		<input class="notes" name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
 	</div>
 	<div class="col-sm-2">
-		<span class="clear-number">clear</span>
+		<span class="col-sm-4 clear-number">clear</span>
+		<span class="col-sm-4"><%= link_to 'edit', edit_item_path(item) %></span>
+		<span class="col-sm-4">hide</span>
 	</div>
 
 	<% elsif type == "scale" %>
@@ -28,7 +30,9 @@
 		<input class="notes" name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
 	</div>
 	<div class="col-sm-2">
-		<span class="clear-range">clear</span>
+		<span class="col-sm-4 clear-range">clear</span>
+		<span class="col-sm-4"><%= link_to 'edit', edit_item_path(item) %></span>
+		<span class="col-sm-4">hide</span>
 	</div>
 
 	<% else %>
@@ -51,7 +55,9 @@
 		<input class="notes" name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
 	</div>
 	<div class="col-sm-2">
-		<span class="clear-boolean">clear</span>
+		<span class="col-sm-4 clear-boolean">clear</span>
+		<span class="col-sm-4"><%= link_to 'edit', edit_item_path(item) %></span>
+		<span class="col-sm-4">hide</span>
 	</div>
 
 	<% end %>
