@@ -44,6 +44,7 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
     gg = GraphGetter.new
     gon.item_series = gg.get_data_by_item(@item.name)
+    gon.chart_type = "column" if @item.item_type == "boolean" else "line"
   end
 
   # PATCH/PUT /items/1
