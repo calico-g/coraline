@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+
     @item = Item.new
     @items = Item.all
     @date = params[:u_date] || Time.now.strftime("%Y-%m-%d")
@@ -41,6 +42,8 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find_by(id: params[:id])
+    gg = GraphGetter.new
+    gon.item_series = gg.get_data_by_item(@item.name)
   end
 
   # PATCH/PUT /items/1

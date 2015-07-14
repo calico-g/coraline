@@ -1,3 +1,4 @@
+<%= include_gon %>
 <div class="main">
 
 	<div class="item-edit-page">
@@ -26,7 +27,7 @@
 		    <span>color coming soon</span>
 		  </div>
 
-			<div>The graph will go here</div>
+			<div id="item-chart" style="width:100%; height:400px;"></div>
 
 		  <div class="actions">
 		    <%= f.submit "save changes", class: "btn" %>
@@ -37,3 +38,32 @@
 
 	</div>
 </div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    $('#item-chart').highcharts({
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: ''
+        },
+        xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                day: '%e %b %Y'
+            }
+        },
+        yAxis: {
+            title: {
+                text: "Here's some sweet numbers. Have a great day."
+            }
+        },
+        series: gon.item_series
+    });
+
+});
+
+
+</script>
