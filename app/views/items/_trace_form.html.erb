@@ -12,7 +12,7 @@
 		<%= number_field_tag 'trace[][input]', trace.input %>
 	</div>
 	<div class="col-sm-4">
-		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+		<input class="notes" name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
 	</div>
 	<div class="col-sm-2">
 		<span class="clear-number">clear</span>
@@ -21,11 +21,11 @@
 	<% elsif type == "scale" %>
 
 	<div class="col-sm-4">
-		<div class="range-input-value"></div>
+		<span class="range-input-value"></span>
 		<%= range_field_tag 'trace[][input]', trace.input, in: 0...11 %>
 	</div>
 	<div class="col-sm-4">
-		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+		<input class="notes" name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
 	</div>
 	<div class="col-sm-2">
 		<span class="clear-range">clear</span>
@@ -48,7 +48,7 @@
 		<% end %>
 	</div>
 	<div class="col-sm-4">
-		<input name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
+		<input class="notes" name="trace[][notes]" type="text_area" value="<%= trace.notes %>" />
 	</div>
 	<div class="col-sm-2">
 		<span class="clear-boolean">clear</span>

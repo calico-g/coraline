@@ -7,12 +7,39 @@
 	  letter-spacing: 10px;
 	  font-size: 5em;
 	 }
-
+	.item-line {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	input[type="range"] {
+		display: inline-block;
+		width: 95%;
+		float: right;
+	}
+	.delete-item {
+		margin-right: 10px;
+	}
 	#datepicker {
+		margin-top: 10px;
+  	margin-bottom: 10px;
 	  font-size: 3em;
 	  input {
 	  	border: 0px;
 	  	letter-spacing: 3px;
 	  }
+	}
+	.btn {
+		color: white;
+		background-color: darkgray;
+	}
+	.graph-button {
+		text-align: right;
+	}
+	.notes {
+		width: 100%;
+	}
+	label {
+		font-weight: normal;
+		margin: 5px;
 	}
 }
