@@ -1,28 +1,7 @@
-== README
+== Coraline
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Coraline is an app to track and correlate basically whatever you want. 
 
-Things you may want to cover:
+It consists of an input page, where you can create and enter input for any number of items, and a charts page where you can see all the data points plotted against each other.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+It is currently in development, and therefore lacking some crucial elements for prime time (like an ability to login, and test suites), but if you want to get into it, please do. I'd love any feedback you have.
