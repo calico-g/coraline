@@ -1,6 +1,6 @@
 .main {
 	font-family: sans-serif;
-	padding: 20px;
+	padding: 30px;
 
 	h1 {
 	  color: darkgray;
@@ -47,5 +47,8 @@
 	label {
 		font-weight: normal;
 		margin: 5px;
+	}
+	.container-fluid {
+		padding: 0;
 	}
 }
