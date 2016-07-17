@@ -10,7 +10,8 @@
 				  </li>
 				<% else %>
 				  <li>
-				  <%= link_to('Login', new_user_session_path)  %>  
+				  <%= link_to('log in', new_user_session_path)  %>
+				  <%= link_to('sign up', new_user_registration_path) %>
 				  </li>
 				<% end %>
 			</div>
@@ -18,7 +19,9 @@
 		
 		<div class="headline row">
 			<div class="col-sm-12">
-				<h1>coraline</h1>
+				<%= link_to(root_url) do %>
+				  <h1>coraline</h1>
+				<% end %>
 			</div>
 		</div>
 		
