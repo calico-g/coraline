@@ -1,5 +1,6 @@
 class TracesController < ApplicationController
   before_action :set_trace, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
 
   # GET /traces
   # GET /traces.json

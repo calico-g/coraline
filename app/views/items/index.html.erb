@@ -1,12 +1,7 @@
 <div class="main">
+  <%= render partial: 'shared/header' %>
 
-  <div class="container-fluid">
-    <div class="headline row">
-      <div class="col-sm-12" style="height:150px; top:60px;">
-        <h1>coraline</h1>
-      </div>
-    </div>
-    <hr>
+  <% if current_user %>
     <div class="row">
       <div class="col-sm-6">
         <%= render partial: "new_item", path: new_item_path %>
@@ -18,5 +13,10 @@
 
     <%= render partial: "items" %>
 
-  </div>
+    </div>
+  <% else %>
+    <p>
+      Welcome to Coraline. This is awesome. Etc. Etc.
+    </p>
+  <% end %>
 </div>
